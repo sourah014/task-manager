@@ -1,19 +1,33 @@
 // API Configuration
 const API_CONFIG = {
-    // Use relative path - works everywhere!
-    BASE_URL: window.location.origin + '/api',
+    // Detect current environment automatically
+    BASE_URL: (function() {
+        // Check if we're on Railway (production) or localhost
+        const currentHost = window.location.hostname;
+        
+        if (currentHost === 'localhost' || currentHost === '127.0.0.1') {
+            // Local XAMPP
+            return 'http://localhost/task-manager-mysql/api';
+        } else {
+            // Railway or any other deployment
+            return window.location.origin + '/api';
+        }
+    })(),
     
+    // Endpoints
     ENDPOINTS: {
         TASKS: '/tasks.php',
         TASK_BY_ID: '/tasks.php'
     },
     
+    // Status values
     STATUS: {
         CREATED: 'Created',
         WIP: 'WIP',
         COMPLETED: 'Completed'
     },
     
+    // Status transitions
     STATUS_FLOW: {
         'Created': 'WIP',
         'WIP': 'Completed',
@@ -21,39 +35,51 @@ const API_CONFIG = {
     }
 };
 
+// Helper function to get full API URL
 function getApiUrl(endpoint) {
-    return `${API_CONFIG.BASE_URL}${endpoint}`;
+    return API_CONFIG.BASE_URL + endpoint;
 }
 ```
 
-**Ye automatically detect karega:**
-- Localhost pe: `http://localhost/api`
-- Railway pe: `https://task-manager-production-8e9a.up.railway.app/api`
+---
+
+## **📝 Ye Code Kya Karega:**
+
+**Localhost pe (XAMPP):**
+```
+http://localhost/task-manager-mysql/api/tasks.php
+```
+
+**Railway pe:**
+```
+https://task-manager-production-8e9a.up.railway.app/api/tasks.php
+```
+
+**Automatic detect karega!** ✅
 
 ---
 
-### **Step 2: GitHub Pe Upload Karo**
+## **🎯 GitHub Update Karo:**
 
-1. **GitHub.com** pe jao
-2. **task-manager** repo kholo
-3. **config.js** file pe click karo
-4. **Edit** (pencil icon) dabao
-5. Updated code paste karo
-6. **Commit changes** green button dabao
-
----
-
-### **Step 3: Railway Auto-Deploy Karega**
-
-**Railway dashboard:**
-- Automatically detect karega GitHub change
-- Redeploy karega (2-3 min)
-- **Deployments** tab mein dekh sakte ho
+1. **GitHub.com** → **task-manager** repo
+2. **config.js** file open karo
+3. **Edit** button (pencil icon)
+4. **Poora file replace** karo upar wale code se
+5. **Commit changes** green button
 
 ---
 
-### **Step 4: Test Karo**
+## **⏳ Railway Auto-Deploy:**
 
-Railway URL dobara kholo:
+**2-3 minutes wait karo:**
+- Railway automatically detect karega
+- Redeploy karega
+- Green tick dikkhega
+
+---
+
+## **✅ Test Karo:**
+
+**Railway URL phir se refresh karo:**
 ```
 https://task-manager-production-8e9a.up.railway.app
