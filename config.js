@@ -1,7 +1,7 @@
 // API Configuration
 const API_CONFIG = {
     // Base URL - Update this with your deployed backend URL
-    BASE_URL: './api',
+    BASE_URL: 'http://localhost/task-manager-mysql/api',
     
     // Endpoints
     ENDPOINTS: {
