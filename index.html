@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Mini Full-Stack App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">Task Manager</h1>
+                <div class="header-stats">
+                    <span class="stat-badge">
+                        <span class="stat-label">Total:</span>
+                        <span class="stat-value" id="totalTasks">0</span>
+                    </span>
+                    <span class="stat-badge completed">
+                        <span class="stat-label">Completed:</span>
+                        <span class="stat-value" id="completedTasks">0</span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Add Task Section -->
+            <section class="add-task-section">
+                <h2 class="section-title">Add New Task</h2>
+                <div class="add-task-form">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        class="task-input" 
+                        placeholder="Enter task name..."
+                        maxlength="255"
+                    >
+                    <button id="addTaskBtn" class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Add Task
+                    </button>
+                </div>
+                <p class="form-hint" id="formHint"></p>
+            </section>
+
+            <!-- Tasks List Section -->
+            <section class="tasks-section">
+                <div class="section-header">
+                    <h2 class="section-title">Your Tasks</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="Created">Created</button>
+                        <button class="filter-btn" data-filter="WIP">In Progress</button>
+                        <button class="filter-btn" data-filter="Completed">Completed</button>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading-state" id="loadingState">
+                    <div class="spinner"></div>
+                    <p>Loading tasks...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="30" stroke="#E0E3E6" stroke-width="4"/>
+                        <path d="M22 32L28 38L42 24" stroke="#C4C6CF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3>No tasks yet</h3>
+                    <p>Add your first task to get started</p>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="tasks-list" id="tasksList"></div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Task Manager &copy; 2026 | Full-Stack Mini Application</p>
+        </footer>
+    </div>
+
+    <!-- Task Item Template -->
+    <template id="taskTemplate">
+        <div class="task-item" data-task-id="">
+            <div class="task-content">
+                <div class="task-info">
+                    <h3 class="task-name"></h3>
+                    <p class="task-meta">
+                        <span class="task-time"></span>
+                    </p>
+                </div>
+                <div class="task-actions">
+                    <span class="status-badge"></span>
+                    <button class="btn-status" title="Change status">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

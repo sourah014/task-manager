@@ -1,0 +1,240 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f9fafb"/>
+  
+  <!-- Title -->
+  <text x="600" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1f2937" text-anchor="middle">
+    Task Manager - System Architecture
+  </text>
+  
+  <!-- Client/Browser Layer -->
+  <g id="client-layer">
+    <rect x="50" y="120" width="300" height="250" fill="#dbeafe" stroke="#2563eb" stroke-width="3" rx="8"/>
+    <text x="200" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af" text-anchor="middle">
+      CLIENT (Browser)
+    </text>
+    
+    <!-- HTML -->
+    <rect x="70" y="180" width="260" height="50" fill="#ffffff" stroke="#93c5fd" stroke-width="2" rx="4"/>
+    <text x="90" y="210" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1f2937">
+      index.html
+    </text>
+    <text x="220" y="210" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+      UI Structure
+    </text>
+    
+    <!-- CSS -->
+    <rect x="70" y="240" width="260" height="50" fill="#ffffff" stroke="#93c5fd" stroke-width="2" rx="4"/>
+    <text x="90" y="270" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1f2937">
+      styles.css
+    </text>
+    <text x="220" y="270" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+      Styling
+    </text>
+    
+    <!-- JS -->
+    <rect x="70" y="300" width="260" height="50" fill="#ffffff" stroke="#93c5fd" stroke-width="2" rx="4"/>
+    <text x="90" y="330" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1f2937">
+      app.js + config.js
+    </text>
+    <text x="220" y="330" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+      Logic & API Calls
+    </text>
+  </g>
+  
+  <!-- API Layer -->
+  <g id="api-layer">
+    <rect x="450" y="120" width="300" height="250" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" rx="8"/>
+    <text x="600" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#92400e" text-anchor="middle">
+      BACKEND API (PHP)
+    </text>
+    
+    <!-- GET Endpoint -->
+    <rect x="470" y="180" width="260" height="50" fill="#ffffff" stroke="#fbbf24" stroke-width="2" rx="4"/>
+    <text x="490" y="200" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#065f46">
+      GET /api/tasks.php
+    </text>
+    <text x="490" y="218" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+      Retrieve all tasks
+    </text>
+    
+    <!-- POST Endpoint -->
+    <rect x="470" y="240" width="260" height="50" fill="#ffffff" stroke="#fbbf24" stroke-width="2" rx="4"/>
+    <text x="490" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#1e40af">
+      POST /api/tasks.php
+    </text>
+    <text x="490" y="278" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+      Create new task
+    </text>
+    
+    <!-- PUT Endpoint -->
+    <rect x="470" y="300" width="260" height="50" fill="#ffffff" stroke="#fbbf24" stroke-width="2" rx="4"/>
+    <text x="490" y="320" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#7c2d12">
+      PUT /api/tasks.php
+    </text>
+    <text x="490" y="338" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">
+      Update task status
+    </text>
+  </g>
+  
+  <!-- Database Layer -->
+  <g id="database-layer">
+    <rect x="850" y="120" width="300" height="250" fill="#d1fae5" stroke="#10b981" stroke-width="3" rx="8"/>
+    <text x="1000" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#065f46" text-anchor="middle">
+      DATABASE (PostgreSQL)
+    </text>
+    
+    <!-- Table -->
+    <rect x="870" y="180" width="260" height="170" fill="#ffffff" stroke="#34d399" stroke-width="2" rx="4"/>
+    <text x="890" y="205" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2937">
+      tasks
+    </text>
+    
+    <line x1="870" y1="215" x2="1130" y2="215" stroke="#d1d5db" stroke-width="1"/>
+    
+    <text x="890" y="235" font-family="monospace" font-size="12" fill="#374151">
+      id: SERIAL (PK)
+    </text>
+    <text x="890" y="255" font-family="monospace" font-size="12" fill="#374151">
+      task_name: VARCHAR(255)
+    </text>
+    <text x="890" y="275" font-family="monospace" font-size="12" fill="#374151">
+      status: VARCHAR(50)
+    </text>
+    <text x="890" y="295" font-family="monospace" font-size="12" fill="#374151">
+      created_at: TIMESTAMP
+    </text>
+    
+    <text x="890" y="325" font-family="Arial, sans-serif" font-size="10" fill="#6b7280" font-style="italic">
+      Status: Created | WIP | Completed
+    </text>
+  </g>
+  
+  <!-- Arrows and Data Flow -->
+  
+  <!-- Client to API -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowhead-return" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#10b981"/>
+    </marker>
+  </defs>
+  
+  <!-- Request arrows -->
+  <line x1="350" y1="210" x2="450" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="380" y="200" font-family="Arial, sans-serif" font-size="11" fill="#2563eb">HTTP Request</text>
+  
+  <line x1="350" y1="270" x2="450" y2="270" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="365" y="260" font-family="Arial, sans-serif" font-size="11" fill="#2563eb">fetch() API</text>
+  
+  <!-- Response arrows -->
+  <line x1="450" y1="240" x2="350" y2="240" stroke="#10b981" stroke-width="2" marker-end="url(#arrowhead-return)"/>
+  <text x="365" y="230" font-family="Arial, sans-serif" font-size="11" fill="#10b981">JSON Response</text>
+  
+  <!-- API to Database -->
+  <line x1="750" y1="210" x2="850" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="765" y="200" font-family="Arial, sans-serif" font-size="11" fill="#2563eb">SQL Query</text>
+  
+  <line x1="850" y1="240" x2="750" y2="240" stroke="#10b981" stroke-width="2" marker-end="url(#arrowhead-return)"/>
+  <text x="765" y="230" font-family="Arial, sans-serif" font-size="11" fill="#10b981">Query Result</text>
+  
+  <line x1="750" y1="270" x2="850" y2="270" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="770" y="260" font-family="Arial, sans-serif" font-size="11" fill="#2563eb">PDO</text>
+  
+  <!-- Request Flow Details -->
+  <g id="flow-details">
+    <text x="100" y="420" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937">
+      Request Flow:
+    </text>
+    
+    <circle cx="110" cy="450" r="15" fill="#2563eb"/>
+    <text x="105" y="457" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">1</text>
+    <text x="140" y="457" font-family="Arial, sans-serif" font-size="14" fill="#374151">
+      User interacts with UI (Add task, Change status, Filter)
+    </text>
+    
+    <circle cx="110" cy="490" r="15" fill="#2563eb"/>
+    <text x="105" y="497" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">2</text>
+    <text x="140" y="497" font-family="Arial, sans-serif" font-size="14" fill="#374151">
+      JavaScript sends HTTP request to PHP API (fetch)
+    </text>
+    
+    <circle cx="110" cy="530" r="15" fill="#2563eb"/>
+    <text x="105" y="537" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">3</text>
+    <text x="140" y="537" font-family="Arial, sans-serif" font-size="14" fill="#374151">
+      PHP API validates input and executes SQL query
+    </text>
+    
+    <circle cx="110" cy="570" r="15" fill="#2563eb"/>
+    <text x="105" y="577" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">4</text>
+    <text x="140" y="577" font-family="Arial, sans-serif" font-size="14" fill="#374151">
+      PostgreSQL processes query and returns data
+    </text>
+    
+    <circle cx="110" cy="610" r="15" fill="#10b981"/>
+    <text x="105" y="617" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">5</text>
+    <text x="140" y="617" font-family="Arial, sans-serif" font-size="14" fill="#374151">
+      API sends JSON response back to client
+    </text>
+    
+    <circle cx="110" cy="650" r="15" fill="#10b981"/>
+    <text x="105" y="657" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">6</text>
+    <text x="140" y="657" font-family="Arial, sans-serif" font-size="14" fill="#374151">
+      JavaScript updates UI without page reload
+    </text>
+  </g>
+  
+  <!-- Technologies Used -->
+  <g id="tech-stack">
+    <rect x="650" y="420" width="500" height="240" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2" rx="6"/>
+    <text x="900" y="450" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937" text-anchor="middle">
+      Technologies Used
+    </text>
+    
+    <!-- Frontend -->
+    <text x="670" y="480" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#2563eb">
+      Frontend:
+    </text>
+    <text x="670" y="500" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • HTML5 (Structure)
+    </text>
+    <text x="670" y="518" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • CSS3 (Styling, Responsive)
+    </text>
+    <text x="670" y="536" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • Vanilla JavaScript ES6+ (Logic)
+    </text>
+    <text x="670" y="554" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • Fetch API (HTTP requests)
+    </text>
+    
+    <!-- Backend -->
+    <text x="670" y="584" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#f59e0b">
+      Backend:
+    </text>
+    <text x="670" y="604" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • PHP 7.4+ (RESTful API)
+    </text>
+    <text x="670" y="622" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • PDO (Database abstraction)
+    </text>
+    
+    <!-- Database -->
+    <text x="900" y="584" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#10b981">
+      Database:
+    </text>
+    <text x="900" y="604" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • PostgreSQL 12+
+    </text>
+    <text x="900" y="622" font-family="Arial, sans-serif" font-size="12" fill="#374151">
+      • SQL constraints & indexes
+    </text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="600" y="750" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">
+    Assignment 2 - Mini Full-Stack Task Manager | Achiredo Technologies | March 2026
+  </text>
+</svg>
